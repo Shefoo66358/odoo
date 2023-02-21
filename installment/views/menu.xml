@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="installment.action_window">
+      <field name="name">Installment window</field>
+      <field name="res_model">installment.installment</field>
+      <field name="view_mode">tree,form,kanban,search,graph,pivot</field>
+
+       <field name="help" type="html">
+           <header>
+               <h1>Welcome</h1>
+           </header>
+            <p class="o_view_smiling_face">
+                 Create your  first customer form
+            </p>
+       </field>
+
+    </record>
+
+     <menuitem name="Installment" id="menu_installment_root" action="installment.action_window"/>
+
+     <menuitem name="installments" id="menu_installment_master"
+              parent="menu_installment_root" />
+
+     <menuitem name="Customer-Installments" id="menu_customer" action="installment.action_window"
+               parent="menu_installment_master" />
+
+
+
+
+</odoo>

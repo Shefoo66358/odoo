@@ -1,0 +1,246 @@
+<odoo>
+  <data>
+
+    <!-- Form View-->
+   <record model="ir.ui.view" id="view_Installment_form">
+      <field name="name">Installment.Form</field>
+      <field name="model">installment.installment</field>
+      <field name="arch" type="xml">
+        <form>
+            <header>
+                <button name="create_customer" string="Open"  type="object" />
+                <button name="create_payment" string="Payment"  type="object" />
+                <button name="create_settlement" string="Settlement"  type="object" />
+            </header>
+            <sheet>
+                 <group>
+                    <field name="name"/>
+                     <field name="reference"/>
+                     <field name="state"/>
+                     <field name="date"/>
+                     <field name="customer"/>
+                     <field name="journal"/>
+                     <field name="account"/>
+                     <field name="analytical_account"/>
+                     <field name="analytical_tags"/>
+                     <field name="amount"/>
+                     <field name="notes"/>
+                  </group>
+                <button name="form_submit" string="Submit"  type="object" />
+                <button name="form_reset" string="Reset"  type="object" />
+                <notebook>
+                    <page string="Payments Notes" name="Payments">
+
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+   <!-- Tree View-->
+
+    <record model="ir.ui.view" id="view_installment_tree">
+      <field name="name">Installment.tree</field>
+      <field name="model">installment.installment</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="id"/>
+             <field name="reference"/>
+             <field name="state"/>
+             <field name="date"/>
+             <field name="customer"/>
+             <field name="journal"/>
+             <field name="account"/>
+             <field name="analytical_account"/>
+             <field name="analytical_tags"/>
+             <field name="amount"/>
+             <field name="notes"/>
+        </tree>
+      </field>
+    </record>
+
+
+<!-- Kanban View-->
+     <record model="ir.ui.view" id="view_installment_kanban">
+      <field name="name">Installment.kanban</field>
+      <field name="model">installment.installment</field>
+            <field name="priority" eval="100"/>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile" archivable="false" js_class="crm_kanban" sample="1">
+                    <field name="name"/>
+                    <field name="id"/>
+                     <field name="reference"/>
+                     <field name="state"/>
+                     <field name="date"/>
+                     <field name="customer"/>
+                     <field name="journal"/>
+                     <field name="account"/>
+                     <field name="analytical_account"/>
+                     <field name="analytical_tags"/>
+                     <field name="amount"/>
+                     <field name="notes"/>
+
+                    <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                                <div>
+                                    <strong class="o_kanban_record_title">Name : <span><field name="name"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">ID : <span><field name="id"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Reference : <span><field name="reference"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">State : <span><field name="state"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Date : <span><field name="date"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Customer : <span><field name="customer"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Journal : <span><field name="journal"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Account : <span><field name="account"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Analytical Account : <span> <field name="analytical_account"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Analytical Tags : <span><field name="analytical_tags"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Amount : <span><field name="amount"/></span></strong>
+                                </div>
+                                <div>
+                                    <strong class="o_kanban_record_title">Notes : <span><field name="notes"/></span></strong>
+                                </div>
+
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+      <!-- Search view-->
+
+          <record model="ir.ui.view" id="view_installment_search">
+              <field name="name">Installment.search</field>
+              <field name="model">installment.installment</field>
+              <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                     <field name="reference"/>
+                     <field name="state"/>
+                     <field name="date"/>
+                     <field name="customer"/>
+                     <field name="journal"/>
+                     <field name="account"/>
+                     <field name="analytical_account"/>
+                     <field name="analytical_tags"/>
+                     <field name="amount"/>
+                     <field name="notes"/>
+                </search>
+              </field>
+            </record>
+
+
+      <!-- Graph View-->
+      <record id="Installment_view_graph" model="ir.ui.view">
+            <field name="name">Installment.report.graph</field>
+            <field name="model">installment.installment</field>
+            <field name="arch" type="xml">
+                <graph string="Pipeline Analysis" sample="1">
+                    <field name="name"/>
+                    <field name="id"/>
+                     <field name="reference"/>
+                     <field name="state"/>
+                     <field name="date"/>
+                     <field name="customer"/>
+                     <field name="journal"/>
+                     <field name="account"/>
+                     <field name="analytical_account"/>
+                     <field name="analytical_tags"/>
+                     <field name="amount"/>
+                     <field name="notes"/>
+
+                </graph>
+            </field>
+        </record>
+
+    <!-- Graph View-->
+        <record id="view_installment_pivot" model="ir.ui.view">
+            <field name="name">Installment.pivot</field>
+            <field name="model">installment.installment</field>
+            <field name="arch" type="xml">
+                <pivot string="Pipeline Analysis" sample="1">
+                    <field name="name" type="col"/>
+                     <field name="reference" type= "col"/>
+                     <field name="state" type="col" />
+                     <field name="date" interval="month" type="col"/>
+                     <field name="customer" type="col"/>
+                     <field name="journal" type="col"/>
+                     <field name="account" type="col"/>
+                     <field name="analytical_account" type="col"/>
+                     <field name="analytical_tags" type="col"/>
+                     <field name="amount" type="measure"/>
+                     <field name="notes" invisible="1"/>
+                </pivot>
+            </field>
+        </record>
+
+
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="installment.action_window">
+      <field name="name">Installment window</field>
+      <field name="res_model">installment.installment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="installment.action_server">
+      <field name="name">Installment server</field>
+      <field name="model_id" ref="model_installment_installment"/>
+      <field name="state">code</field>
+      <field name="code">
+
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="Installment" id="installment.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="installment.menu_1" parent="installment.menu_root"/>
+    <menuitem name="Menu 2" id="installment.menu_2" parent="installment.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="installment.menu_1_list" parent="installment.menu_1"
+              action="installment.action_window"/>
+    <menuitem name="Server to list" id="installment" parent="installment.menu_2"
+              action="installment.action_server"/>
+-->
+  </data>
+</odoo>

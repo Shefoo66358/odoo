@@ -1,0 +1,22 @@
+
+<odoo>
+    <data>
+
+        <record id="Installment_Module_Access" model="ir.module.category">
+            <field name="name">Installment  </field>
+        </record>
+
+        <record id="Installment_User_Access" model="res.groups">
+            <field name="name">Installment User </field>
+            <field name="category_id" ref="Installment_Module_Access"/>
+        </record>
+
+        <record id="Installment_Manager_Access" model="res.groups">
+            <field name="name">Installment Manager </field>
+            <field name="category_id" ref="Installment_Module_Access"/>
+        </record>
+
+    </data>
+
+</odoo>
+
